@@ -44,29 +44,7 @@ export default function VideoCover() {
         className="w-full h-auto block"
       />
 
-      {/* Opacity Overlay has been removed for better direct presentation */}
-
-      {/* Bouncing scroll indicator at bottom */}
-      {/*<motion.button
-        onClick={scrollToContent}
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-brand-cream/80 hover:text-white transition-colors cursor-pointer focus:outline-none"
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1, duration: 0.8 }}
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{
-            duration: 1.8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
-          <ChevronDown className="w-6 h-6 stroke-[1.5]" />
-        </motion.div>
-      </motion.button>*/}
-
-      {/* Sound Control Button */}
+      {/* Botón de control de sonido */}
       <motion.button
         onClick={toggleMute}
         className="absolute bottom-10 right-6 sm:right-10 z-20 flex items-center gap-2 px-4 py-2.5 rounded-full bg-brand-bg-dark/40 backdrop-blur-md border border-white/10 text-brand-cream hover:bg-brand-bg-dark/60 hover:text-white transition-all cursor-pointer focus:outline-none shadow-lg text-xs font-semibold uppercase tracking-wider"
