@@ -1,0 +1,6 @@
+{
+  "name": "Lic. Ana Paris - Psicóloga y Doula",
+  "description": "Sitio web profesional de la Lic. Ana Paris, Psicóloga clínica y Doula. Atención individual de adultos, menopausia, vínculos, acompañamiento perinatal y orientación a familias en Córdoba, Argentina.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
