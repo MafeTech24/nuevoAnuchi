@@ -3,67 +3,17 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { X } from 'lucide-react';
+import React from 'react';
+import { motion } from 'motion/react';
 
 export default function WhatsAppFloatingButton() {
-  const [showBubble, setShowBubble] = useState(false);
   const whatsappNumber = '5493515557316';
   const messageText = 'Hola Ana, vi tu sitio web profesional. Me gustaría hacerte una consulta.';
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(messageText)}`;
 
-  useEffect(() => {
-    // Check if the user has dismissed the bubble before
-    const isDismissed = localStorage.getItem('wa_bubble_dismissed');
-    if (!isDismissed) {
-      // Delay showing the bubble by 2.5 seconds for a premium, non-intrusive feel
-      const timer = setTimeout(() => {
-        setShowBubble(true);
-      }, 2500);
-      return () => clearTimeout(timer);
-    }
-  }, []);
-
-  const handleCloseBubble = (e: React.MouseEvent) => {
-    e.stopPropagation(); // Avoid triggering the WhatsApp link click
-    setShowBubble(false);
-    localStorage.setItem('wa_bubble_dismissed', 'true');
-  };
-
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end pointer-events-none select-none">
-      <AnimatePresence>
-        {showBubble && (
-          <motion.div
-            initial={{ opacity: 0, y: 15, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 10, scale: 0.9 }}
-            transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-            className="pointer-events-auto relative mb-3 max-w-[260px] bg-white text-brand-text p-4 rounded-2xl shadow-xl border border-brand-sage/20 font-body text-xs leading-relaxed"
-          >
-            {/* Opciones de cierre */}
-            <button
-              onClick={handleCloseBubble}
-              className="absolute top-2 right-2 text-brand-text-muted hover:text-brand-accent p-0.5 rounded-full hover:bg-brand-bg-sage/40 transition-colors focus:outline-none cursor-pointer"
-              aria-label="Cerrar mensaje"
-            >
-              <X className="w-3 h-3" />
-            </button>
 
-            {/* Mensaje de la burbuja */}
-            {/* <div className="pr-4">
-              <span className="font-semibold text-brand-sage-dark block mb-0.5">Lic. Ana Paris</span>
-              <p className="text-[11px] text-brand-text/90">
-                ¿Tenés dudas sobre los programas? Escribime y coordinamos una sesión de claridad gratuita.
-              </p>
-            </div> */}
-            
-            {/* Triángulo decorativo inferior */}
-            <div className="absolute bottom-[-6px] right-5 w-3 h-3 bg-white border-r border-b border-brand-sage/20 rotate-45" />
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {/* Botón Flotante */}
       <motion.div

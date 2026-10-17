@@ -12,7 +12,6 @@ export default function VideoCover() {
   const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-
   const toggleMute = () => {
     if (!videoRef.current) return;
     videoRef.current.muted = !videoRef.current.muted;
@@ -22,12 +21,9 @@ export default function VideoCover() {
   return (
     <section
       id="video-cover"
-      className="relative w-full overflow-hidden bg-brand-bg-dark"
+      className="relative w-full h-[calc(100dvh-68px)] md:h-[calc(100vh-72px)] mt-[68px] md:mt-[72px] overflow-hidden bg-brand-bg-dark"
     >
-      {/* Espaciador para compensar el navbar fijo */}
-      <div className="h-[68px] md:h-[72px] w-full" />
-
-      {/* Video de portada */}
+      {/* Video de portada full cover adaptable */}
       <video
         ref={videoRef}
         src={portadaVideo}
@@ -35,29 +31,25 @@ export default function VideoCover() {
         loop
         muted
         playsInline
-        className="w-full h-auto block"
+        className="w-full h-full object-cover object-[center_12%] sm:object-[center_15%] md:object-center block"
       />
 
-      {/* Botón de control de sonido */}
+      {/* Botón de control de sonido - Solo ícono circular en extremo inferior izquierdo */}
       <motion.button
         onClick={toggleMute}
-        className="absolute bottom-10 right-6 sm:right-10 z-20 flex items-center gap-2 px-4 py-2.5 rounded-full bg-brand-bg-dark/40 backdrop-blur-md border border-white/10 text-brand-cream hover:bg-brand-bg-dark/60 hover:text-white transition-all cursor-pointer focus:outline-none shadow-lg text-xs font-semibold uppercase tracking-wider"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.8 }}
+        className="absolute bottom-6 left-6 sm:bottom-8 sm:left-8 z-20 flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white hover:bg-black/80 transition-all cursor-pointer focus:outline-none shadow-xl"
+        whileHover={{ scale: 1.08 }}
+        whileTap={{ scale: 0.92 }}
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.3, duration: 0.4 }}
+        aria-label={isMuted ? 'Activar sonido' : 'Silenciar'}
+        title={isMuted ? 'Activar sonido' : 'Silenciar'}
       >
         {isMuted ? (
-          <>
-            <VolumeX className="w-4 h-4 text-brand-cream" />
-            <span>Activar sonido</span>
-          </>
+          <VolumeX className="w-5 h-5 text-white" />
         ) : (
-          <>
-            <Volume2 className="w-4 h-4 text-brand-cream" />
-            <span>Silenciar</span>
-          </>
+          <Volume2 className="w-5 h-5 text-white" />
         )}
       </motion.button>
     </section>

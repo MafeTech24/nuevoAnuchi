@@ -13,7 +13,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen bg-brand-bg flex items-center pt-24 pb-16 overflow-hidden select-none"
+      className="relative min-h-[80vh] md:min-h-screen bg-brand-bg flex items-center py-16 md:py-24 overflow-hidden select-none"
     >
       {/* Decorative Botanical Elements - CSS-only circles and ellipses for wellness branding */}
       <div className="absolute top-[20%] left-[8%] w-72 h-72 rounded-full bg-brand-bg-sage opacity-50 blur-3xl pointer-events-none" />
