@@ -30,7 +30,10 @@ export default function VideoCover() {
       id="video-cover"
       className="relative w-full overflow-hidden bg-brand-bg-dark"
     >
-      {/* Background Video (archivo local) */}
+      {/* Espaciador para compensar el navbar fijo */}
+      <div className="h-[68px] md:h-[72px] w-full" />
+
+      {/* Video de portada */}
       <video
         ref={videoRef}
         src={portadaVideo}
