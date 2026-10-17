@@ -12,12 +12,6 @@ export default function VideoCover() {
   const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  const scrollToContent = () => {
-    const heroSection = document.getElementById('hero');
-    if (heroSection) {
-      heroSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   const toggleMute = () => {
     if (!videoRef.current) return;
